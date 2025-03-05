@@ -1,0 +1,45 @@
+.pagination-spreads::ng-deep li {
+  background-color: #2A0C4E;
+  border-radius: 5px;
+}
+
+.pagination-spreads::ng-deep ul > li.disabled {
+  display: none !important;
+}
+
+.pagination-spreads::ng-deep ul > li:not(.active) > a {
+  background-color: #F1F1F1;
+  border-color: black !important;
+  color: black;
+}
+
+.voluntariadoAncla{
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  border-radius: 10px;
+  border: 3px solid var(--primary-color) !important;
+  text-decoration: none;
+}
+.width{
+  width: 109.3%;
+
+}
+
+.text-truncate-lineas {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+@media screen and (max-width: 1600px){
+    img{
+      width: 100%;
+    }
+    .width{
+      width: 100%;
+
+    }
+
+}

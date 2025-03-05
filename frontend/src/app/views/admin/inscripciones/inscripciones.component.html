@@ -1,0 +1,22 @@
+<div class="container">
+  <div >
+    <div class="table-responsible">
+      <table class="table table-striped mt-4" >
+        <thead >
+        <tr>
+          <th scope="col">Voluntariado</th>
+          <th scope="col">Usuario</th>
+          <th scope="col">Fecha</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let insc of inscripciones">
+          <td>{{ insc.id_voluntariado }}</td>
+          <td>{{ insc.id_usuario }}</td>
+          <td>{{ insc.fecha }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

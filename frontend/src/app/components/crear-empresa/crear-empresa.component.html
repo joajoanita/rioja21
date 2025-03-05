@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="mt-4">
+    <form [formGroup]="empresaForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre de la empresa</label>
+        <input type="text" class="form-control" id="nombre" aria-describedby="empresaNombre" formControlName="name">
+      </div>
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <input type="text" class="form-control" id="descripcion" formControlName="description">
+      </div>
+      <button type="submit" class="button-color-secondary p-2 px-3">Submit</button>
+    </form>
+  </div>
+</div>

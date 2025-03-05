@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="d-flex">
+    <button class="button-color-primary mt-4" [routerLink]="'/crearEmpresa'">Añadir empresas</button>
+  </div>
+
+  <div >
+    <div class="table-responsible">
+      <table class="table table-striped mt-4" >
+        <thead >
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Acción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  *ngFor="let empresa of empresas">
+          <th scope="row">{{empresa.id}}</th>
+          <td>{{ empresa.name }}</td>
+          <td>{{ empresa.description }}</td>
+          <td class="text-center">
+            <div class="justify-content-center align-items-center">
+              <button class="button-color-secondary my-2 p-2 px-2 me-3" [routerLink]="['/editarEmpresa', empresa.id]">Editar</button>
+              <button type="button" class="button-color-secondary my-2 p-2 px-2" data-bs-toggle="modal" [attr.data-bs-target]="'#empresa' + empresa.id">
+                Eliminar
+              </button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+        <div *ngFor="let empresa of empresas" class="modal fade" id="empresa"  [id]="'empresa' + empresa.id" tabindex="-1" aria-labelledby="empresaModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="empresaModalLabel">¡Cuidado!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                ¿Estás seguro que quieres eliminar a {{empresa.name}}?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" (click)="deleteEmpresa(empresa.id)" class="btn btn-primary" >Eliminar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="mt-4">
+    <form (ngSubmit)="updateVoluntariado()" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="city" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="city" name="city" [(ngModel)]="voluntariado.city" required>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Descripción</label>
+        <input type="text" class="form-control" id="description" name="description" [(ngModel)]="voluntariado.description" required>
+      </div>
+      <div class="mb-3" >
+        <label for="id_empresa">Empresa:</label>
+        <select [(ngModel)]="voluntariado.id_empresa" name="id_empresa" class="form-select border-color-primary mb-4" aria-label="Selecciona una categoría" id="id_empresa">
+          <option *ngFor="let empresa of empresas" [value]="empresa.id">{{ empresa.name }}</option>
+        </select>
+      </div>
+      <button type="submit" class="button-color-primary">Submit</button>
+    </form>
+  </div>
+</div>

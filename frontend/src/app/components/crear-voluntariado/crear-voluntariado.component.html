@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="mt-4">
+    <form [formGroup]="voluntariadoForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="city" class="form-label">Ciudad del Voluntariado</label>
+        <input type="text" class="form-control" id="city" aria-describedby="empresaNombre" formControlName="city">
+      </div>
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <input type="text" class="form-control" id="descripcion" formControlName="description">
+      </div>
+      <div class="mb-3" >
+        <label for="id_empresa">Empresa:</label>
+        <select formControlName="id_empresa"  class="form-select border-color-primary mb-4" aria-label="Selecciona una categoría" id="id_empresa">
+          <option *ngFor="let empresa of empresas" [value]="empresa.id">{{ empresa.name }}</option>
+        </select>
+      </div>
+      <button type="submit" class="button-color-secondary p-2 px-3">Submit</button>
+    </form>
+  </div>
+</div>
