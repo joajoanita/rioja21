@@ -44,5 +44,6 @@ Route::group([
     Route::post('/inscribirseEnVoluntariado',   [VoluntariadoController::class, 'inscribirseEnVoluntariado']);
     Route::get('/indexEmpresas',                [EmpresaController::class, 'indexEmpresas']);
     Route::get('/detalleVoluntariado/{id}',     [VoluntariadoController::class, 'showVoluntariado']);
+    Route::get('/showVoluntariadoByEmpresa',     [EmpresaController::class, 'showVoluntariadoByEmpresa']);
 
 });

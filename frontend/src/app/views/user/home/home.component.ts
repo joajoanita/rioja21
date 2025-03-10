@@ -5,6 +5,7 @@ import {CommonModule} from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {Subscription} from 'rxjs';
 import {BusquedaService} from '../../../service/Filtro/busqueda.service';
+import {EmpresaService} from '../../../service/Empresa/empresa.service';
 
 
 @Component({
@@ -17,10 +18,12 @@ import {BusquedaService} from '../../../service/Filtro/busqueda.service';
 export class HomeComponent {
   voluntariados: any[] = [];
   pagina: number = 1;
-
+  empresas: any[] = [];
   buscarQuery: string = '';
   busqueda: Subscription | undefined;
-  constructor(private voluntariadoService: VoluntariadoService, private busquedaServicio: BusquedaService) { }
+  changeColor: string | null = null;
+  errorMessage!: string;
+  constructor(private voluntariadoService: VoluntariadoService, private busquedaServicio: BusquedaService, private empresaService: EmpresaService) { }
 
   ngOnInit(): void{
     this.busqueda = this.busquedaServicio.busquedaActual.subscribe(
@@ -30,6 +33,7 @@ export class HomeComponent {
       }
     );
     this.indexVoluntariado();
+    this.indexEmpresas();
   }
 
   ngOnDestroy(){
@@ -46,6 +50,30 @@ export class HomeComponent {
       },
       (error) => {
         console.log('Error al recuperar la información del voluntariado', error);
+      }
+    );
+  }
+
+  filtroPorEmpresa(nombreEmpresa: string){
+    this.empresaService.showVoluntariadoByEmpresa(nombreEmpresa).subscribe(
+      data => {
+        this.voluntariados = data.voluntariado;
+        this.changeColor = nombreEmpresa;
+      },
+      error => {
+        console.error('Error al filtrar actividades', error);
+      }
+    );
+  }
+
+  indexEmpresas() {
+    this.empresaService.indexEmpresas().subscribe(
+      data => {
+        this.empresas = data;
+        console.log(this.empresas);
+      },
+      error => {
+        this.errorMessage = error.error;
       }
     );
   }

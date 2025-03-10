@@ -13,7 +13,7 @@ class AuthController extends Controller
 {
     public function register(Request $r){
         $validator = Validator::make($r->all(),[
-            'name' => 'required|string|between:5,20',
+            'name' => 'required|string|between:4,20',
             'email' => 'required|string|email|max:100|unique:users',
             'password' => [
                 'required',
@@ -27,10 +27,11 @@ class AuthController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(),400);
+            return response()->json($validator->errors(),40);
         }
 
         try{
+
             $user = User::create(array_merge(
                 $validator->validated(),
                 [
@@ -59,7 +60,7 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors(), 400);
         }
 
         if (!$token = JWTAuth::attempt($validator->validated())){

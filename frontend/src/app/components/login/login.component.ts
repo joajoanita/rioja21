@@ -17,7 +17,7 @@ import {AuthStateService} from '../../service/Auth/auth-state.service';
 export class LoginComponent {
   loginForm: FormGroup;
   user = new User;
-
+  errorMessage: any = null;
   constructor(
     public router: Router,
     public fb: FormBuilder,
@@ -37,7 +37,7 @@ export class LoginComponent {
         this.respondeHandler(result);
       },
       (error) => {
-        console.log('Ha ocurrido un error', error)
+        this.errorMessage = error.error;
       },
 
       () => {

@@ -1,5 +1,12 @@
 <section>
   <div class="container">
+    <div class="filter-buttons">
+      <button class="button-color-secondary p-2 me-2 mb-3 mt-3" *ngFor="let empresa of empresas"
+              (click)="filtroPorEmpresa(empresa.name)" [ngClass]="{'button-color-primary': changeColor === empresa.name}"
+              [ngStyle]="{'transition':'all 0.3s ease'}">
+        {{ empresa.name }}
+      </button>
+    </div>
     <div class="mt-2">
       <img src="assets/images/banner.jpg" alt="banner-entreculturas">
       <div class="d-flex bg-white width pb-4 text-justify" >

@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class AuthService {
   User = new User();
+  isLoggedIn: any;
   constructor(private http:HttpClient) { }
 
   register(postData: any): Observable<any>{
